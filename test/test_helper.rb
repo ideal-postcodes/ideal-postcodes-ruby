@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'mocha/setup'
-require 'ideal-postcodes'
+require 'ideal_postcodes'
 require 'shoulda'
 
 module IdealPostcodes
