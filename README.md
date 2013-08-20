@@ -12,7 +12,7 @@ gem install ideal_postcodes
 
 __Get an API Key__
 
-Get a key [Ideal-Postcodes.co.uk](https://ideal-postcodes.co.uk). Try out the service with the test postcode 'ID1 1QD'
+Get a key at [Ideal-Postcodes.co.uk](https://ideal-postcodes.co.uk). Try out the service with the test postcode 'ID1 1QD'
 
 __Use it__
 
@@ -25,17 +25,16 @@ IdealPostcodes.api_key = "your_key_goes_here"
 
 postcode = IdealPostcodes::Postcode.lookup "ID1 1QD"
 
-#	postcode.addresses =>
+# postcode.addresses =>
 #
 # [
-#		{
-#			:postcode=>"ID1 1QD",
-# 		:post_town=>"LONDON",
-# 		:line_1=>"Kingsley Hall",
-# 		:line_2=>"Powis Road",
-# 		:line_3=>""
-#		}, 
-#		... and so on
+#  {
+#   :postcode=>"ID1 1QD",
+#   :post_town=>"LONDON",
+#   :line_1=>"Kingsley Hall",
+#   :line_2=>"Powis Road",
+#   :line_3=>""
+#  }, ... and so on
 ```
 
 ## Registering
