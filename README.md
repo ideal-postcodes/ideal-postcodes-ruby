@@ -2,23 +2,21 @@
 
 Get a full list of addresses for any given UK postcode using the Ideal-Postcodes.co.uk API. We use the most accurate addressing database in the UK, Royal Mail's Postcode Address File.
 
-This gem is a simple wrapper for our API.
-
 ## Getting Started
 
-_Install it_
+__Install it__
 
 ```bash
 gem install ideal_postcodes
 ```
 
-_Get an API Key_
+__Get an API Key__
 
 Get a key [Ideal-Postcodes.co.uk](https://ideal-postcodes.co.uk). Try out the service with the test postcode 'ID1 1QD'
 
-_Use it_
+__Use it__
 
-Start performing address lookups with a few lines of code
+Do address lookups with a few lines of Ruby
 
 ```ruby
 require 'ideal_postcodes'
@@ -44,9 +42,7 @@ postcode = IdealPostcodes::Postcode.lookup "ID1 1QD"
 
 PAF is licensed from the Royal Mail and is, unfortunately, not free to use. Ideal Postcodes aims to be simple to use and fairly priced to use for web and mobile developers.
 
-We charge _2p per [external](https://ideal-postcodes.co.uk/termsandconditions#external) lookup_.
-
-Please read our terms and conditions.
+We charge _2p_ per [external](https://ideal-postcodes.co.uk/termsandconditions#external) lookup.
 
 ## Documentation
 

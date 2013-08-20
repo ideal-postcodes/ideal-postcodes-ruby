@@ -1,2 +1,2 @@
-# Allows to reference by ideal-postcodes
-require File.dirname(__FILE__) + '/idealpostcodes'
+# Allows to reference by ideal_postcodes
+require 'idealpostcodes'
