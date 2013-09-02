@@ -46,3 +46,6 @@ We charge _2p_ per [external](https://ideal-postcodes.co.uk/termsandconditions#e
 ## Documentation
 
 More documentation can be found [here](https://ideal-postcodes.co.uk/documentation/ruby-wrapper)
+
+## License
+MIT
