@@ -22,15 +22,7 @@ Get a key at [Ideal-Postcodes.co.uk](https://ideal-postcodes.co.uk). Try out the
 
 __Configuration__
 
-In order to perform lookups, you'll need to configure the gem by passing in your api key.
-
-**For Rails**, the best way to do this is create a file in your initializers folder and drop in your key with this line of code:
-
-```ruby
-IdealPostcodes.api_key = "<your key goes here>"
-```
-
-**For General Ruby Scripting**, you'll can do the following:
+In order to perform lookups, you'll need to configure the gem by passing in your api key by doing the following:
 
 ```ruby
 require 'ideal_postcodes'
@@ -38,9 +30,15 @@ require 'ideal_postcodes'
 IdealPostcodes.api_key = "your_key_goes_here"
 ```
 
+**For Rails**, the best way to do this is create a file in your initializers folder and drop in your key with this line of code:
+
+```ruby
+IdealPostcodes.api_key = "<your key goes here>"
+```
+
 __Usage__
 
-Do address lookups with a few lines of Ruby. Simply call #lookup on the IdealPostcodes::Postcode class. This will return a Postcode object containing the complete list of addresses if the postcode exists.
+Simply call #lookup class method on IdealPostcodes::Postcode. This will return a Postcode object containing the complete list of addresses if the postcode exists.
 
 ```ruby
 postcode = IdealPostcodes::Postcode.lookup "ID1 1QD"
