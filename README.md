@@ -30,34 +30,17 @@ In order to perform lookups, you'll need to configure the gem by passing in your
 IdealPostcodes.api_key = "<your key goes here>"
 ```
 
-**For General Ruby Scripting**, you'll need to drop the following:
-
+**For General Ruby Scripting**, you'll can do the following:
 
 ```ruby
 require 'ideal_postcodes'
 
 IdealPostcodes.api_key = "your_key_goes_here"
-
-postcode = IdealPostcodes::Postcode.lookup "ID1 1QD"
-
-# postcode.addresses =>
-#
-# [
-#  {
-#   :postcode=>"ID1 1QD",
-#   :post_town=>"LONDON",
-#   :line_1=>"Kingsley Hall",
-#   :line_2=>"Powis Road",
-#   :line_3=>""
-#  }, ... and so on
 ```
-
-
-
 
 __Usage__
 
-Do address lookups with a few lines of Ruby. Simply call #lookup on the IdealPostcodes::Postcode class.
+Do address lookups with a few lines of Ruby. Simply call #lookup on the IdealPostcodes::Postcode class. This will return a Postcode object containing the complete list of addresses if the postcode exists.
 
 ```ruby
 postcode = IdealPostcodes::Postcode.lookup "ID1 1QD"
