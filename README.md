@@ -64,6 +64,26 @@ end
 #  }, ... and so on
 ```
 
+__Exceptions__
+
+The wrapper will raise an exception for anything other than a 200 response or an empty 404 response (which means no addresses at postcode).
+
+```ruby
+begin
+  IdealPostcodes::Postcode.lookup "ID1 1QD"
+rescue IdealPostcodes::AuthenticationError => e
+	# Invalid API Key
+rescue IdealPostcodes::TokenExhaustedError => e
+	# Token has run out of lookups
+rescue IdealPostcodes::LimitReachedError => e
+	# One of your predefinied limits has been reached
+rescue IdealPostcodes::IdealPostcodesError => e
+	# API Error
+rescue => e
+	# An unexpected error
+end
+```
+
 ## Registering
 
 PAF is licensed from the Royal Mail and is, unfortunately, not free to use. Ideal Postcodes aims to be simple to use and fairly priced to use for web and mobile developers.
@@ -73,6 +93,12 @@ We charge _2p_ per [external](https://ideal-postcodes.co.uk/termsandconditions#e
 ## Documentation
 
 More documentation can be found [here](https://ideal-postcodes.co.uk/documentation/ruby-wrapper)
+
+## Testing
+
+```
+bundle exec rake test
+```
 
 ## License
 MIT
