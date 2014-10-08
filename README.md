@@ -1,6 +1,6 @@
-# Ideal-Postcodes.co.uk API Wrapper
+# Ideal Postcodes (Ruby Wrapper) [![Build Status](https://travis-ci.org/ideal-postcodes/ideal-postcodes-ruby.png)](https://travis-ci.org/ideal-postcodes/ideal-postcodes-ruby)
 
-Get a full list of addresses for any given UK postcode using the Ideal-Postcodes.co.uk API. We use the most accurate addressing database in the UK, Royal Mail's Postcode Address File.
+Ruby wrapper for Ideal-Postcodes.co.uk UK postcode and addressing API.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ __Install it__
 gem install ideal_postcodes
 ```
 
-Alternatively for rails, include this in your gemfile and bundle install
+Alternatively for Rails, include this in your gemfile and bundle install
 
 ```ruby
 gem 'ideal_postcodes'
@@ -30,7 +30,7 @@ require 'ideal_postcodes'
 IdealPostcodes.api_key = "your_key_goes_here"
 ```
 
-**For Rails**, the best way to do this is create a file in your initializers folder and drop in your key with this line of code:
+**For Rails**, the simplest way to do this is create a file in your initializers folder and drop in your key with this line of code:
 
 ```ruby
 IdealPostcodes.api_key = "<your key goes here>"
@@ -38,7 +38,7 @@ IdealPostcodes.api_key = "<your key goes here>"
 
 __Usage__
 
-Simply call #lookup class method on IdealPostcodes::Postcode. This will return a Postcode object containing the complete list of addresses if the postcode exists.
+IdealPostcodes::Postcode.lookup will return a Postcode object containing the complete list of addresses if the postcode exists.
 
 ```ruby
 postcode = IdealPostcodes::Postcode.lookup "ID1 1QD"
@@ -86,9 +86,7 @@ end
 
 ## Registering
 
-PAF is licensed from the Royal Mail and is, unfortunately, not free to use. Ideal Postcodes aims to be simple to use and fairly priced to use for web and mobile developers.
-
-We charge _2p_ per [external](https://ideal-postcodes.co.uk/termsandconditions#external) lookup.
+PAF is licensed from the Royal Mail and is, unfortunately, not free to use. It requires an API Key which can be generated with an account.
 
 ## Documentation
 
