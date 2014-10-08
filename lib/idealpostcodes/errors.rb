@@ -14,7 +14,7 @@ module IdealPostcodes
 
 		def to_s
 			status = @http_code.nil? ? "" : "#{@http_code} error."
-			ideal_code = @response_code.nil ? "" : "(#{@response_code})"
+			ideal_code = @response_code.nil? ? "" : "(#{@response_code})"
 			"#{status} error. (#{ideal_code}) #{message}"
 		end
 	end
