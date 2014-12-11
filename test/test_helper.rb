@@ -2,6 +2,7 @@ require 'test/unit'
 require 'mocha/setup'
 require 'ideal_postcodes'
 require 'shoulda'
+require 'json'
 
 module IdealPostcodes
 
@@ -20,7 +21,7 @@ module IdealPostcodes
 end
 
 def test_response(body, status=200)
-	body = MultiJson.dump(body)
+	body = JSON.dump(body)
 	m = mock
 	m.instance_variable_set('@instance_vals', {code: status, body: body})
 	def m.body; @instance_vals[:body]; end

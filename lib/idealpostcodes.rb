@@ -1,6 +1,6 @@
 require 'rest-client'
 require 'uri'
-require 'multi_json'
+require 'json'
 require 'cgi'
 require 'idealpostcodes/version'
 require 'idealpostcodes/postcode'
@@ -55,8 +55,8 @@ module IdealPostcodes
 
 	def self.parse(response)
 		begin
-      Util.keys_to_sym MultiJson.load(response)
-    rescue MultiJson::DecodeError => e
+      Util.keys_to_sym JSON.parse(response)
+    rescue JSON::ParserError => e
       raise handle_client_error(e)
     end
 	end
