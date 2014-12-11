@@ -13,11 +13,9 @@ spec = Gem::Specification.new do |s|
 
   s.add_dependency('rest-client', '~> 1.6')
 
-  s.add_development_dependency('mocha', '~> 0.14.0')
-  s.add_development_dependency('test-unit', '~>2.5.5')
-  s.add_development_dependency('shoulda', '~> 3.5.0')
   s.add_development_dependency('rake', '~> 10.1.0')
   s.add_development_dependency('vcr', '~> 2.9.3')
+  s.add_development_dependency('rspec', '~> 3.1.0')
 
   s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- test/*`.split("\n")
