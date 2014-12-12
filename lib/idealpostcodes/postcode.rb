@@ -1,6 +1,6 @@
 module IdealPostcodes
 	module Postcode
-		def self.lookup(postcode)
+		def self.lookup postcode
 			begin
 				response = IdealPostcodes.request :get, "postcodes/#{postcode}"
 				addresses = response[:result]
@@ -11,7 +11,7 @@ module IdealPostcodes
 			addresses
 		end
 
-		def self.find_by_location(geolocation)
+		def self.find_by_location geolocation
 			query = {lonlat: "#{geolocation[:longitude]},#{geolocation[:latitude]}"}
 			query[:limit] = geolocation[:limit] unless geolocation[:limit].nil?
 			query[:radius] = geolocation[:radius] unless geolocation[:radius].nil?
