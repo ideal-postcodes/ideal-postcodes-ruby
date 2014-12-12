@@ -6,7 +6,16 @@ VCR.configure do |c|
 	c.hook_into :webmock
 end
 
+# Configure Ideal Postcodes lib
+require 'ideal_postcodes'
+
 RSpec.configure do |c|
+	c.before(:each) do
+    IdealPostcodes.base_url = 'https://localhost:1337'
+		IdealPostcodes.api_key = "gandhi"
+		IdealPostcodes.apply_secret nil
+  end
+
 	c.around(:each) do |example|
 		VCR.use_cassette(example.metadata[:full_description]) do
 			example.run
@@ -14,22 +23,20 @@ RSpec.configure do |c|
 	end
 end
 
-# Configure Ideal Postcodes lib
-require 'ideal_postcodes'
-IdealPostcodes.base_url = 'https://localhost:1337'
-IdealPostcodes.api_key = "gandhi"
-
+def contains_attributes attribute_list, target
+	result = true
+	attribute_list.each do |attribute|
+		result = false if target[attribute].nil?
+	end
+	result
+end
 
 def postcode_location_elements
 	[:postcode, :longitude, :latitude, :northings, :eastings]
 end
 
 def is_postcode_location(postcode)
-	result = true
-	postcode_location_elements.each do |attribute|
-		result = false if postcode[attribute].nil?
-	end
-	result
+	contains_attributes postcode_location_elements, postcode
 end
 
 def address_elements
@@ -42,9 +49,17 @@ def address_elements
 end
 
 def is_address(address)
-	result = true
-	address_elements.each do |attribute|
-		result = false if address[attribute].nil?
-	end
-	result
+	contains_attributes address_elements, address
+end
+
+def key_elements
+	[:lookups_remaining, :daily_limit, :individual_limit, :allowed_urls, :notifications]
+end
+
+def is_key(key)
+	contains_attributes key_elements, key
+end
+
+def secret_key
+	"uk_hxp6ouk0rmyXoobVJnehrsQcdvTfb"
 end

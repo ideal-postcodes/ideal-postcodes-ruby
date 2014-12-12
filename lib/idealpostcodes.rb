@@ -18,7 +18,7 @@ module IdealPostcodes
 	@version = '1'
 
 	class << self
-		attr_accessor :api_key, :base_url, :version
+		attr_accessor :api_key, :base_url, :version, :secret
 	end
 
 	def self.request(method, path, params = {})
@@ -47,6 +47,21 @@ module IdealPostcodes
 			handle_client_error(error)
 		end
 		parse response.body
+	end
+
+	def self.apply_secret(secret)
+		@secret = secret
+	end
+
+	def self.key_available
+		response = Key.lookup @api_key
+		response[:available]
+	end
+
+	def self.key_details
+		raise IdealPostcodes::AuthenticationError.new('No Secret Key provided. ' +
+				'Set your secret key with IdealPostcodes.apply_secret #your_key') if @secret.nil?
+		response = Key.lookup_details @api_key, @secret
 	end
 
 	private

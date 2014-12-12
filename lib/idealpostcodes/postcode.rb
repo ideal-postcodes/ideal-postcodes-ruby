@@ -15,9 +15,7 @@ module IdealPostcodes
 			query = {lonlat: "#{geolocation[:longitude]},#{geolocation[:latitude]}"}
 			query[:limit] = geolocation[:limit] unless geolocation[:limit].nil?
 			query[:radius] = geolocation[:radius] unless geolocation[:radius].nil?
-
 			response = IdealPostcodes.request :get, 'postcodes', query
-
 			response[:result]
 		end
 	end

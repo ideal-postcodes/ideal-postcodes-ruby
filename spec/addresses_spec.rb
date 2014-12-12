@@ -11,12 +11,10 @@ describe IdealPostcodes::Address do
 			expect(address).to be_nil
 		end
 		it 'raises an exception if invalid key' do
-			old_key = IdealPostcodes.api_key
 			IdealPostcodes.api_key = 'foo'
 			expect {
 				IdealPostcodes::Address.lookup 0
 			}.to raise_error(IdealPostcodes::AuthenticationError)
-			IdealPostcodes.api_key = old_key
 		end
 		it 'raises an exception if no lookups remaining' do
 			expect {
@@ -51,12 +49,10 @@ describe IdealPostcodes::Address do
 			expect(results.page).to equal(page)
 		end
 		it 'raises an exception if invalid key' do
-			old_key = IdealPostcodes.api_key
 			IdealPostcodes.api_key = 'foo'
 			expect {
 				results = IdealPostcodes::Address.search "ID1 1QD"
 			}.to raise_error(IdealPostcodes::AuthenticationError)
-			IdealPostcodes.api_key = old_key
 		end
 		it 'raises an exception if no lookups remaining' do
 			expect {

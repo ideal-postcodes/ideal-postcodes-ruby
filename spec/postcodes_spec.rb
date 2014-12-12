@@ -25,12 +25,10 @@ describe IdealPostcodes::Postcode do
 			}.to raise_error(IdealPostcodes::LimitReachedError)
 		end
 		it 'raises an exception if invalid key' do
-			old_key = IdealPostcodes.api_key
 			IdealPostcodes.api_key = 'foo'
 			expect {
 				IdealPostcodes::Postcode.lookup 'ID1 1QD'
 			}.to raise_error(IdealPostcodes::AuthenticationError)
-			IdealPostcodes.api_key = old_key
 		end
 	end
 	describe '.find_by_location' do

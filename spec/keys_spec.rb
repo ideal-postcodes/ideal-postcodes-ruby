@@ -14,7 +14,7 @@ describe IdealPostcodes::Key do
 
 	describe '.lookup_details' do
 		it 'returns key details' do
-			result = IdealPostcodes::Key.lookup_details "gandhi", "uk_hxp6ouk0rmyXoobVJnehrsQcdvTfb"
+			result = IdealPostcodes::Key.lookup_details "gandhi", secret_key
 			expect(result[:lookups_remaining]).to_not be_nil
 			expect(result[:daily_limit]).to_not be_nil
 			expect(result[:individual_limit]).to_not be_nil
