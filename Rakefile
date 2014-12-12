@@ -7,3 +7,7 @@ begin
 rescue LoadError
   # no rspec available
 end
+
+task :eject_tapes do
+	`rm spec/vcr_cassettes/*.yml`
+end
