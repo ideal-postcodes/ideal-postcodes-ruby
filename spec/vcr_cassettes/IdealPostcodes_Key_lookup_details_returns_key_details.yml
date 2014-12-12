@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://localhost:1337/v1/postcodes?api_key=gandhi&limit=1&lonlat=0.6298,51.7923
+    uri: https://localhost:1337/v1/keys/gandhi?api_key=gandhi&user_token=uk_hxp6ouk0rmyXoobVJnehrsQcdvTfb
     body:
       encoding: US-ASCII
       string: ''
@@ -23,9 +23,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '258'
+      - '405'
       Etag:
-      - '"-583643089"'
+      - '"265982900"'
       Date:
       - Fri, 12 Dec 2014 17:28:00 GMT
       Connection:
@@ -34,16 +34,26 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "result": [
-            {
-              "postcode": "CM8 1EF",
-              "northings": 213679,
-              "eastings": 581461,
-              "longitude": 0.629834723775309,
-              "latitude": 51.7923246977375,
-              "distance": 3.64568457
+          "result": {
+            "lookups_remaining": 20896,
+            "daily_limit": {
+              "limit": null,
+              "consumed": 0
+            },
+            "individual_limit": {
+              "limit": null
+            },
+            "allowed_urls": [],
+            "notifications": {
+              "emails": [
+                "cablanchard2@gmail.com"
+              ],
+              "enabled": true
+            },
+            "automated_topups": {
+              "enabled": true
             }
-          ],
+          },
           "code": 2000,
           "message": "Success"
         }
