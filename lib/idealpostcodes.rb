@@ -38,7 +38,7 @@ module IdealPostcodes
 				handle_client_error(error)
 			end
 		rescue RestClient::Exception, Errno::ECONNREFUSED => error
-			handle_client_error(e)
+			handle_client_error(error)
 		end
 		parse response.body
 	end
