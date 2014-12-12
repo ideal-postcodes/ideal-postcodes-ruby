@@ -6,7 +6,7 @@ module IdealPostcodes
 			hash.each do |key, value|
 				result << "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}"
 			end
-			result.join("&")
+			result.join('&')
 		end
 
 		def self.keys_to_sym(object)

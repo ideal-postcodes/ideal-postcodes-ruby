@@ -85,7 +85,7 @@ module IdealPostcodes
 	end
 
 	def self.general_error(response_code, response_body)
-		IdealPostcodesError.new "Invalid response object", response_code, response_body
+		IdealPostcodesError.new 'Invalid response object', response_code, response_body
 	end
 
 end
