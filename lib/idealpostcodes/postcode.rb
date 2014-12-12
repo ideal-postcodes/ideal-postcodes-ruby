@@ -1,14 +1,5 @@
 module IdealPostcodes
-	class Postcode
-
-		attr_reader :postcode_data, :postcode, :addresses
-
-		def initialize(postcode = nil, postcode_data = nil)
-			@raw = postcode_data
-			@addresses = (postcode_data.nil? || postcode_data[:result].nil?) ? [] : postcode_data[:result]
-			@postcode = postcode
-		end
-
+	module Postcode
 		def self.lookup(postcode)
 			begin
 				response = IdealPostcodes.request :get, "postcodes/#{postcode}"
@@ -16,20 +7,18 @@ module IdealPostcodes
 				raise error unless error.response_code == 4040
 				response = nil
 			end
-			new postcode, response
+			addresses = (response.nil? || response[:result].nil?) ? [] : response[:result]
+			addresses
 		end
 
-		def empty?
-			@raw.nil?
-		end
+		def self.find_by_location(geolocation)
+			query = {lonlat: "#{geolocation[:longitude]},#{geolocation[:latitude]}"}
+			query[:limit] = geolocation[:limit] unless geolocation[:limit].nil?
+			query[:radius] = geolocation[:radius] unless geolocation[:radius].nil?
 
-		def addresses
-			@addresses
-		end
+			response = IdealPostcodes.request :get, "postcodes", query
 
-		def to_s
-			addresses.to_s
+			response[:result]
 		end
-
 	end
 end

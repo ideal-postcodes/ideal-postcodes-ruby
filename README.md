@@ -1,72 +1,38 @@
-# Ideal Postcodes (Ruby Wrapper) [![Build Status](https://travis-ci.org/ideal-postcodes/ideal-postcodes-ruby.png)](https://travis-ci.org/ideal-postcodes/ideal-postcodes-ruby)
+# Ideal Postcodes Ruby Library [![Build Status](https://travis-ci.org/ideal-postcodes/ideal-postcodes-ruby.png)](https://travis-ci.org/ideal-postcodes/ideal-postcodes-ruby)
 
-Ruby wrapper for Ideal-Postcodes.co.uk UK postcode and addressing API.
+Ideal Postcodes is a simple JSON API to query UK postcodes and addresses. Find out more at [Ideal-Postcodes.co.uk](https://ideal-postcodes.co.uk/)
+
+Our API is based off Royal Mail's Postcode Address File and is updated daily. Each convenience method incurs a small charge (typically 2p) - free methods are labelled as free and based off open data sources.
 
 ## Getting Started
 
-__Install it__
+**Install**
 
 ```bash
 gem install ideal_postcodes
 ```
 
-Alternatively for Rails, include this in your gemfile and bundle install
+Alternatively, include this in your gemfile and bundle install
 
 ```ruby
 gem 'ideal_postcodes'
 ```
 
-__Get an API Key__
+**Create a Key**
 
-Get a key at [Ideal-Postcodes.co.uk](https://ideal-postcodes.co.uk). Try out the service with the test postcode 'ID1 1QD'
+Sign up at [Ideal-Postcodes.co.uk](https://ideal-postcodes.co.uk) and create a key.
 
-__Configuration__
+**Configure**
 
-In order to perform lookups, you'll need to configure the gem by passing in your api key by doing the following:
+Communication with the API requires a key.
 
 ```ruby
-require 'ideal_postcodes'
-
 IdealPostcodes.api_key = "your_key_goes_here"
 ```
 
-**For Rails**, the simplest way to do this is create a file in your initializers folder and drop in your key with this line of code:
+## Error Handling
 
-```ruby
-IdealPostcodes.api_key = "<your key goes here>"
-```
-
-__Usage__
-
-IdealPostcodes::Postcode.lookup will return a Postcode object containing the complete list of addresses if the postcode exists.
-
-```ruby
-postcode = IdealPostcodes::Postcode.lookup "ID1 1QD"
-
-if postcode.empty? 
-	puts "Your postcode doesn't have a match"
-else
-	postcode.addresses
-end
-
-# postcode.addresses =>
-#
-# [
-#  {
-#   :postcode => "ID1 1QD",
-#   :post_town => "LONDON",
-#   :line_1 => "Kingsley Hall",
-#   :line_2 => "Powis Road",
-#   :line_3 => "",
-#   :organisation_name => "",
-#   :building_name => "Kingsley Hall",
-#   :udprn => 12345678
-#  }, ... and so on
-```
-
-__Exceptions__
-
-The wrapper will raise an exception for anything other than a 200 response or an empty 404 response (which means no addresses at postcode).
+It's important that you lookout for common exceptions when interacting with the API. The most common exceptions can be caught as shown below.
 
 ```ruby
 begin
@@ -84,19 +50,126 @@ rescue => e
 end
 ```
 
-## Registering
+Possible errors to look out for are listed in the [documentation](https://ideal-postcodes.co.uk/documentatpion/response-codes).
 
-PAF is licensed from the Royal Mail and is, unfortunately, not free to use. It requires an API Key which can be generated with an account.
+## Methods
 
-## Documentation
+The client provides a number of methods to allow you to get specific jobs done quickly and easily. These methods are listed below.
 
-More documentation can be found [here](https://ideal-postcodes.co.uk/documentation/ruby-wrapper)
+### Get all addresses for a postcode [(docs)](https://ideal-postcodes.co.uk/documentation/postcodes#postcode)
+
+```
+IdealPostcodes::Postcode.lookup postcode
+```
+
+Returns an array of addresses representing all addresses at the specified postcode.
+
+**Arguments**
+
+- `postcode` (string). The postcode you want to lookup, case and space insensitive.
+
+**Returns**
+
+An array of hashes which represent each address at the postcode. Returns an empty array for an invalid postcode.
+
+**Example**
+
+```ruby
+addresses = IdealPostcodes::Postcode.lookup "ID1 1QD"
+
+if postcode.empty? 
+	puts "Your postcode doesn't have a match"
+else
+	puts addresses
+end
+
+# addresses =>
+# [
+#  {
+#   :postcode => "ID1 1QD",
+#   :post_town => "LONDON",
+#   :line_1 => "Kingsley Hall",
+#   :line_2 => "Powis Road",
+#   :line_3 => "",
+#   :organisation_name => "",
+#   :building_name => "Kingsley Hall",
+#   :udprn => 12345678
+#  }, ... and so on
+```
+
+**Notes**
+
+Data source: Royal Mail Postcode Address File, Ordance Survey. Not free.
+
+Use the postcode "ID1 1QD" to test this method for free. The complete list of test postcodes is available in the [documentation](https://ideal-postcodes/documentation/postcodes).
+
+### Search for an address [(docs)](https://ideal-postcodes.co.uk/documentation/addresses#query)
+
+Perform a search for addresses which match your search term.
+
+```ruby
+IdealPostcodes::Address.search search_term[, options]
+```
+
+**Arguments**
+
+- `search_term` (string). The address you wish to search for
+- `options` (hash, optional). Customise your search. 
+	- `limit` (number). The maximum number of returned results per page
+	-	`page` (number). Page of results to return (starts at page 0)
+
+**Returns**
+
+What does it return
+
+**Notes**
+
+Data source: Royal Mail Postcode Address File, Ordance Survey. Not free.
+
+Use the address "ID1 1QD" to test integration for free. The complete list of test methods is available in the [documentation](https://ideal-postcodes/documentation/addresses).
+
+### Get nearby postcode for a given geolocation [(docs)](https://ideal-postcodes.co.uk/documentation/postcodes#lonlat)
+
+Retrieve the nearest postcodes for a given geolocation. Free to use.
+
+```ruby
+IdealPostcodes::Postcode.find_by_location longitude: lon, latitude: lat [limit: lim, radius: rad]
+```
+
+**Arguments**
+
+- `location` (Hash). Requires a `longitude` (number) and `latitude` (number) attribute. `Limit` (number) and `radius` (number) are optional and represent the maxmimum number of results and search radius (in metres) respectively.
+
+**Returns**
+
+An array of hashes which represent the nearest postcodes to the specified location. Ordered by distance from location.
+
+**Example**
+
+```ruby
+# An example of how to use this method
+```
+
+**Notes**
+
+Data source: Ordance Survey. Free to use.
+
+## Changelog
+
+*1.0.0*
+- Major rewrite to make way for more resources
+- Breaking change applied to postcode lookup functionality
+- Implemented [addresses resource](https://ideal-postcodes.co.uk/documentation/addresses)
+- Implemented [keys resource](https://ideal-postcodes.co.uk/documentation/keys)
+- Implemented [postcodes resource](https://ideal-postcodes.co.uk/documentation/postcodes). Added location-based postcode searches
+- Swapped out test suite with rspec and vcr
 
 ## Testing
 
 ```
-bundle exec rake test
+bundle exec rake
 ```
 
 ## License
+
 MIT

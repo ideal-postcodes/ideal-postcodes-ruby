@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://localhost:1337/v1/postcodes/ID1%201QD?api_key=foo
+    uri: https://localhost:1337/v1/postcodes?api_key=gandhi&lonlat=0,0
     body:
       encoding: US-ASCII
       string: ''
@@ -15,17 +15,17 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Access-Control-Allow-Origin:
       - '*'
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '135'
+      - '58'
       Etag:
-      - '"-632160061"'
+      - '"-963557841"'
       Date:
       - Fri, 12 Dec 2014 16:21:31 GMT
       Connection:
@@ -34,8 +34,9 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "code": 4010,
-          "message": "Invalid Key. For more information see http://ideal-postcodes.co.uk/documentation/response-codes#4010"
+          "result": [],
+          "code": 2000,
+          "message": "Success"
         }
     http_version: 
   recorded_at: Fri, 12 Dec 2014 16:21:31 GMT

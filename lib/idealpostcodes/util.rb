@@ -4,7 +4,7 @@ module IdealPostcodes
 		def self.merge_params(hash)
 			result = []
 			hash.each do |key, value|
-				result << "#{CGI.escape(key.to_s)}=#{CGI.escape(value)}"
+				result << "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}"
 			end
 			result.join("&")
 		end
