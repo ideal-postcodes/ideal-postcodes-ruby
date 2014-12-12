@@ -1,7 +1,7 @@
-require 'rest-client'
+require 'cgi'
 require 'uri'
 require 'json'
-require 'cgi'
+require 'rest-client'
 require 'idealpostcodes/version'
 
 # Require utility libraries
@@ -9,8 +9,9 @@ require 'idealpostcodes/util'
 require 'idealpostcodes/errors'
 
 # Require Resources
-require 'idealpostcodes/postcode'
+require 'idealpostcodes/key'
 require 'idealpostcodes/address'
+require 'idealpostcodes/postcode'
 
 module IdealPostcodes
 	@base_url = 'https://api.ideal-postcodes.co.uk'

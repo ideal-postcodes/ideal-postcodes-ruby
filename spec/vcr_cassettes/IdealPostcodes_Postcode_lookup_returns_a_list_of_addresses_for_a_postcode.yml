@@ -27,7 +27,7 @@ http_interactions:
       Etag:
       - '"1136868456"'
       Date:
-      - Fri, 12 Dec 2014 16:53:19 GMT
+      - Fri, 12 Dec 2014 17:20:05 GMT
       Connection:
       - keep-alive
     body:
@@ -264,5 +264,5 @@ http_interactions:
           "message": "Success"
         }
     http_version: 
-  recorded_at: Fri, 12 Dec 2014 16:53:19 GMT
+  recorded_at: Fri, 12 Dec 2014 17:20:05 GMT
 recorded_with: VCR 2.9.3
