@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://localhost:1337/v1/postcodes?api_key=gandhi&lonlat=0,0
+    uri: https://localhost:1337/v1/addresses/-1?api_key=gandhi
     body:
       encoding: US-ASCII
       string: ''
@@ -15,17 +15,17 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Access-Control-Allow-Origin:
       - '*'
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '58'
+      - '49'
       Etag:
-      - '"-963557841"'
+      - '"-1363169990"'
       Date:
       - Fri, 12 Dec 2014 16:34:23 GMT
       Connection:
@@ -34,9 +34,8 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "result": [],
-          "code": 2000,
-          "message": "Success"
+          "code": 4044,
+          "message": "No UDPRN found"
         }
     http_version: 
   recorded_at: Fri, 12 Dec 2014 16:34:23 GMT

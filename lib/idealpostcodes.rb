@@ -3,9 +3,14 @@ require 'uri'
 require 'json'
 require 'cgi'
 require 'idealpostcodes/version'
-require 'idealpostcodes/postcode'
+
+# Require utility libraries
 require 'idealpostcodes/util'
 require 'idealpostcodes/errors'
+
+# Require Resources
+require 'idealpostcodes/postcode'
+require 'idealpostcodes/address'
 
 module IdealPostcodes
 	@base_url = 'https://api.ideal-postcodes.co.uk'

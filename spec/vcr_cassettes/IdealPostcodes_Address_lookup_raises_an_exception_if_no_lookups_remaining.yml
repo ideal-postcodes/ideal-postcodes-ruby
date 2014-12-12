@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://localhost:1337/v1/postcodes?api_key=gandhi&lonlat=0,0
+    uri: https://localhost:1337/v1/addresses/-2?api_key=gandhi
     body:
       encoding: US-ASCII
       string: ''
@@ -15,29 +15,28 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 200
-      message: OK
+      code: 402
+      message: Payment Required
     headers:
       Access-Control-Allow-Origin:
       - '*'
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '58'
+      - '146'
       Etag:
-      - '"-963557841"'
+      - '"1304241290"'
       Date:
-      - Fri, 12 Dec 2014 16:34:23 GMT
+      - Fri, 12 Dec 2014 16:38:50 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: |-
         {
-          "result": [],
-          "code": 2000,
-          "message": "Success"
+          "code": 4020,
+          "message": "Token balance depleted. For more information see http://ideal-postcodes.co.uk/documentation/response-codes#4020"
         }
     http_version: 
-  recorded_at: Fri, 12 Dec 2014 16:34:23 GMT
+  recorded_at: Fri, 12 Dec 2014 16:38:50 GMT
 recorded_with: VCR 2.9.3

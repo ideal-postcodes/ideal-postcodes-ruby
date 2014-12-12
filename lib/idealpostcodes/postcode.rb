@@ -3,11 +3,11 @@ module IdealPostcodes
 		def self.lookup(postcode)
 			begin
 				response = IdealPostcodes.request :get, "postcodes/#{postcode}"
+				addresses = response[:result]
 			rescue IdealPostcodes::ResourceNotFoundError => error
 				raise error unless error.response_code == 4040
-				response = nil
+				addresses = []
 			end
-			addresses = (response.nil? || response[:result].nil?) ? [] : response[:result]
 			addresses
 		end
 
