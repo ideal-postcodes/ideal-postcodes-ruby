@@ -7,9 +7,9 @@ spec = Gem::Specification.new do |s|
   s.version = IdealPostcodes::VERSION
   s.summary = 'Wrapper for the Ideal-Postcodes.co.uk API'
   s.description = 'Ideal Postcodes is a simple postcode lookup API for UK addresses. See https://ideal-postcodes.co.uk'
-  s.authors = ['Chris Blanchard']
-  s.email = ['cablanchard@gmail.com']
-  s.homepage = 'https://ideal-postcodes.co.uk/documentation'
+  s.authors = ['Ideal Postcodes']
+  s.email = ['support@ideal-postcodes.co.uk']
+  s.homepage = 'https://ideal-postcodes.co.uk/'
 
   s.add_dependency('rest-client', '~> 1.6')
 
@@ -19,6 +19,6 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency 'webmock', '~> 1.20.4'
 
   s.files = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- test/*`.split("\n")
+  s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.require_paths = ['lib']
 end
