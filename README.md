@@ -291,7 +291,7 @@ None.
 IdealPostcodes.key_available # => true, you're clear to make lookups
 ```
 
-### Find out private key information [(docs)](https://ideal-postcodes.co.uk/documentation/keys#details)
+### Retrieve private key information [(docs)](https://ideal-postcodes.co.uk/documentation/keys#details)
 
 This method reveals private information about your key such as the lookup balance, whitelisted URLs, etc. Note: a secret key is required to invoke this method.
 
