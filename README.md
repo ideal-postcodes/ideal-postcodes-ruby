@@ -113,6 +113,10 @@ Use the postcode "ID1 1QD" to test this method for free. The complete list of te
 
 Perform a search for addresses which match your search term.
 
+```ruby
+IdealPostcodes::Postcode.search search_term, limit: 20, page: 0
+```
+
 **Arguments**
 
 - `search_term` (string). The address you wish to search for
