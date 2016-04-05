@@ -50,7 +50,7 @@ rescue => e
 end
 ```
 
-Possible errors to look out for are listed in the [documentation](https://ideal-postcodes.co.uk/documentatpion/response-codes).
+Possible errors to look out for are listed in the [documentation](https://ideal-postcodes.co.uk/documentation/response-codes).
 
 ## Methods
 
