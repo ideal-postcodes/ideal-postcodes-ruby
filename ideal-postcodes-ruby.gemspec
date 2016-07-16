@@ -10,6 +10,7 @@ spec = Gem::Specification.new do |s|
   s.authors = ['Ideal Postcodes']
   s.email = ['support@ideal-postcodes.co.uk']
   s.homepage = 'https://ideal-postcodes.co.uk/'
+  s.licenses = ['MIT']
 
   s.add_dependency('rest-client', '~> 1.6')
 
