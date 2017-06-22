@@ -114,7 +114,7 @@ Use the postcode "ID1 1QD" to test this method for free. The complete list of te
 Perform a search for addresses which match your search term.
 
 ```ruby
-IdealPostcodes::Postcode.search search_term, limit: 20, page: 0
+IdealPostcodes::Address.search search_term, limit: 20, page: 0
 ```
 
 **Arguments**
@@ -338,17 +338,6 @@ IdealPostcodes.apply_secret "your secret key"
 ```
 
 Do not share your secret key and avoid commiting this key to your codebase.
-
-
-## Changelog
-
-*1.0.0*
-- Major rewrite to make way for more resources
-- Breaking change applied to postcode lookup functionality
-- Implemented [addresses resource](https://ideal-postcodes.co.uk/documentation/addresses)
-- Implemented [keys resource](https://ideal-postcodes.co.uk/documentation/keys)
-- Implemented [postcodes resource](https://ideal-postcodes.co.uk/documentation/postcodes). Added location-based postcode searches
-- Swapped out test suite with rspec and vcr
 
 ## Testing
 

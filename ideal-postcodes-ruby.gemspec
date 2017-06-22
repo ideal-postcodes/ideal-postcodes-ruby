@@ -12,12 +12,12 @@ spec = Gem::Specification.new do |s|
   s.homepage = 'https://ideal-postcodes.co.uk/'
   s.licenses = ['MIT']
 
-  s.add_dependency('rest-client', '~> 1.6')
+  s.add_dependency('rest-client', '~> 1.8')
 
-  s.add_development_dependency 'rake', '~> 10.1.0'
-  s.add_development_dependency 'vcr', '~> 2.9.3'
-  s.add_development_dependency 'rspec', '~> 3.1.0'
-  s.add_development_dependency 'webmock', '~> 1.20.4'
+  s.add_development_dependency 'rake', '~> 10.1'
+  s.add_development_dependency 'vcr', '~> 2.9'
+  s.add_development_dependency 'rspec', '~> 3.1'
+  s.add_development_dependency 'webmock', '~> 1.20'
 
   s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- spec/*`.split("\n")
