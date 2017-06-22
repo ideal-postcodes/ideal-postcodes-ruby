@@ -12,7 +12,7 @@ spec = Gem::Specification.new do |s|
   s.homepage = 'https://ideal-postcodes.co.uk/'
   s.licenses = ['MIT']
 
-  s.add_dependency('rest-client', '~> 1.6')
+  s.add_dependency('rest-client', '~> 1.8')
 
   s.add_development_dependency 'rake', '~> 10.1.0'
   s.add_development_dependency 'vcr', '~> 2.9.3'
