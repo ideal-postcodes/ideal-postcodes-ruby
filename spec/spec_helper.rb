@@ -1,5 +1,8 @@
 # Enable VCR
 require 'vcr'
+require 'webmock'
+
+WebMock.enable!
 
 VCR.configure do |c|
 	c.cassette_library_dir = 'spec/vcr_cassettes'
