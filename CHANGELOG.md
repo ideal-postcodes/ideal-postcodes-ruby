@@ -2,6 +2,11 @@
 
 Any changes, including backwards incompatible changes will be listed here
 
+## 2.0.0 (11/10/2017)
+
+- Adds Ruby 2.4.0 support
+- Drops 1.9 support
+
 ## 1.1.0 (22/6/2017)
 
 - Updated rest-client dependency
