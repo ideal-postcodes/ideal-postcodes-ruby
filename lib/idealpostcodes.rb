@@ -23,10 +23,8 @@ module IdealPostcodes
 
   def self.request(method, path, params = {})
     unless @api_key
-      raise IdealPostcodes::AuthenticationError.new(
-              'No API Key provided. ' +
-                'Set your key with IdealPostcodes.api_key = #your_key'
-            )
+      raise IdealPostcodes::AuthenticationError, 'No API Key provided. ' +
+                                                 'Set your key with IdealPostcodes.api_key = #your_key'
     end
 
     url = URI.parse(resource_url(path))
@@ -36,14 +34,14 @@ module IdealPostcodes
 
     begin
       response = generate_request(request_options)
-    rescue RestClient::ExceptionWithResponse => error
-      if rcode = error.http_code && rbody = error.http_body
+    rescue RestClient::ExceptionWithResponse => e
+      if rcode = e.http_code && rbody = e.http_body
         handle_error(rcode, rbody)
       else
-        handle_client_error(error)
+        handle_client_error(e)
       end
-    rescue RestClient::Exception, Errno::ECONNREFUSED => error
-      handle_client_error(error)
+    rescue RestClient::Exception, Errno::ECONNREFUSED => e
+      handle_client_error(e)
     end
     parse response.body
   end
@@ -59,18 +57,14 @@ module IdealPostcodes
 
   def self.key_details
     if @secret.nil?
-      raise IdealPostcodes::AuthenticationError.new(
-              'No Secret Key provided. ' +
-                'Set your secret key with IdealPostcodes.apply_secret #your_key'
-            )
+      raise IdealPostcodes::AuthenticationError, 'No Secret Key provided. ' +
+                                                 'Set your secret key with IdealPostcodes.apply_secret #your_key'
     end
     response = Key.lookup_details @api_key, @secret
   end
 
-  private
-
   def self.resource_url(path = '')
-    URI.escape "#{@base_url}/v#{@version}/#{path}"
+    "#{@base_url}/v#{@version}/#{path}"
   end
 
   def self.generate_request(options)
@@ -78,17 +72,16 @@ module IdealPostcodes
   end
 
   def self.parse(response)
-    begin
-      Util.keys_to_sym JSON.parse(response)
-    rescue JSON::ParserError => e
-      raise handle_client_error(e)
-    end
+    Util.keys_to_sym JSON.parse(response)
+  rescue JSON::ParserError => e
+    raise handle_client_error(e)
   end
 
   def self.handle_error(http_code, http_body)
     error = parse http_body
 
-    ideal_code, ideal_message = error[:code], error[:message]
+    ideal_code = error[:code]
+    ideal_message = error[:message]
 
     case ideal_code
     when 4010
@@ -120,9 +113,7 @@ module IdealPostcodes
   end
 
   def self.handle_client_error(error)
-    raise IdealPostcodesError.new(
-            "An unexpected error occured: #{error.message})"
-          )
+    raise IdealPostcodesError, "An unexpected error occured: #{error.message})"
   end
 
   def self.general_error(response_code, response_body)
