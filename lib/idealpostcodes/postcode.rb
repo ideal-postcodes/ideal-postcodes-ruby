@@ -4,8 +4,9 @@ module IdealPostcodes
       begin
         response = IdealPostcodes.request :get, "postcodes/#{postcode}"
         addresses = response[:result]
-      rescue IdealPostcodes::ResourceNotFoundError => error
-        raise error unless error.response_code == 4040
+      rescue IdealPostcodes::ResourceNotFoundError => e
+        raise e unless e.response_code == 4040
+
         addresses = []
       end
       addresses

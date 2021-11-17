@@ -1,9 +1,17 @@
+require 'uri'
+
 module IdealPostcodes
+  DEFAULT_PARSER = URI::Parser.new
+
   class Util
+    def self.escape(str)
+      IdealPostcodes::DEFAULT_PARSER.escape(str)
+    end
+
     def self.merge_params(hash)
       result = []
       hash.each do |key, value|
-        result << "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}"
+        result << "#{escape(key.to_s)}=#{escape(value.to_s)}"
       end
       result.join('&')
     end
