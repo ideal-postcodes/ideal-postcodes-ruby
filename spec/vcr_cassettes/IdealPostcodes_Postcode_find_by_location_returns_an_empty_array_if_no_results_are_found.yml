@@ -1,43 +1,43 @@
 ---
 http_interactions:
-- request:
-    method: get
-    uri: https://localhost:1337/v1/postcodes?api_key=gandhi&lonlat=0,0
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - '*/*; q=0.5, application/xml'
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Access-Control-Allow-Origin:
-      - '*'
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '58'
-      Etag:
-      - '"-963557841"'
-      Date:
-      - Fri, 12 Dec 2014 17:40:28 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |-
-        {
-          "result": [],
-          "code": 2000,
-          "message": "Success"
-        }
-    http_version: 
-  recorded_at: Fri, 12 Dec 2014 17:40:28 GMT
+  - request:
+      method: get
+      uri: https://localhost:1337/v1/postcodes?api_key=gandhi&lonlat=0,0
+      body:
+        encoding: US-ASCII
+        string: ""
+      headers:
+        Accept:
+          - "*/*; q=0.5, application/xml"
+        Accept-Encoding:
+          - gzip, deflate
+        User-Agent:
+          - Ruby
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Access-Control-Allow-Origin:
+          - "*"
+        Content-Type:
+          - application/json; charset=utf-8
+        Content-Length:
+          - "58"
+        Etag:
+          - '"-963557841"'
+        Date:
+          - Fri, 12 Dec 2014 17:40:28 GMT
+        Connection:
+          - keep-alive
+      body:
+        encoding: UTF-8
+        string: |-
+          {
+            "result": [],
+            "code": 2000,
+            "message": "Success"
+          }
+      http_version:
+    recorded_at: Fri, 12 Dec 2014 17:40:28 GMT
 recorded_with: VCR 2.9.3

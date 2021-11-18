@@ -1,74 +1,74 @@
 ---
 http_interactions:
-- request:
-    method: get
-    uri: https://localhost:1337/v1/addresses/0?api_key=gandhi
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - '*/*; q=0.5, application/xml'
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Access-Control-Allow-Origin:
-      - '*'
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '911'
-      Etag:
-      - '"1752222490"'
-      Date:
-      - Fri, 12 Dec 2014 17:40:26 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: |-
-        {
-          "result": {
-            "postcode": "ID1 1QD",
-            "postcode_inward": "1QD",
-            "postcode_outward": "ID1",
-            "post_town": "LONDON",
-            "dependant_locality": "",
-            "double_dependant_locality": "",
-            "thoroughfare": "Barons Court Road",
-            "dependant_thoroughfare": "",
-            "building_number": "2",
-            "building_name": "",
-            "sub_building_name": "",
-            "po_box": "",
-            "department_name": "",
-            "organisation_name": "",
-            "udprn": 0,
-            "postcode_type": "S",
-            "su_organisation_indicator": "",
-            "delivery_point_suffix": "1G",
-            "line_1": "2 Barons Court Road",
-            "line_2": "",
-            "line_3": "",
-            "premise": "2",
-            "country": "England",
-            "county": "",
-            "district": "Hammersmith and Fulham",
-            "ward": "North End",
-            "longitude": -0.208644362766368,
-            "latitude": 51.4899488390558,
-            "eastings": 524466,
-            "northings": 178299
-          },
-          "code": 2000,
-          "message": "Success"
-        }
-    http_version: 
-  recorded_at: Fri, 12 Dec 2014 17:40:26 GMT
+  - request:
+      method: get
+      uri: https://localhost:1337/v1/addresses/0?api_key=gandhi
+      body:
+        encoding: US-ASCII
+        string: ""
+      headers:
+        Accept:
+          - "*/*; q=0.5, application/xml"
+        Accept-Encoding:
+          - gzip, deflate
+        User-Agent:
+          - Ruby
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Access-Control-Allow-Origin:
+          - "*"
+        Content-Type:
+          - application/json; charset=utf-8
+        Content-Length:
+          - "911"
+        Etag:
+          - '"1752222490"'
+        Date:
+          - Fri, 12 Dec 2014 17:40:26 GMT
+        Connection:
+          - keep-alive
+      body:
+        encoding: UTF-8
+        string: |-
+          {
+            "result": {
+              "postcode": "ID1 1QD",
+              "postcode_inward": "1QD",
+              "postcode_outward": "ID1",
+              "post_town": "LONDON",
+              "dependant_locality": "",
+              "double_dependant_locality": "",
+              "thoroughfare": "Barons Court Road",
+              "dependant_thoroughfare": "",
+              "building_number": "2",
+              "building_name": "",
+              "sub_building_name": "",
+              "po_box": "",
+              "department_name": "",
+              "organisation_name": "",
+              "udprn": 0,
+              "postcode_type": "S",
+              "su_organisation_indicator": "",
+              "delivery_point_suffix": "1G",
+              "line_1": "2 Barons Court Road",
+              "line_2": "",
+              "line_3": "",
+              "premise": "2",
+              "country": "England",
+              "county": "",
+              "district": "Hammersmith and Fulham",
+              "ward": "North End",
+              "longitude": -0.208644362766368,
+              "latitude": 51.4899488390558,
+              "eastings": 524466,
+              "northings": 178299
+            },
+            "code": 2000,
+            "message": "Success"
+          }
+      http_version:
+    recorded_at: Fri, 12 Dec 2014 17:40:26 GMT
 recorded_with: VCR 2.9.3
